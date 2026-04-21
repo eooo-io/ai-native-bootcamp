@@ -8,3 +8,6 @@
 
 # Do not commit team-specific adaptations of templates
 templates/*.local.md
+
+# Local Claude Code working context (the committed template lives at templates/CLAUDE.md.template)
+CLAUDE.md
