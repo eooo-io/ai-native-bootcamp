@@ -13,6 +13,8 @@ A **three-session, 90-minutes-each** bootcamp that helps engineering teams move 
 
 This curriculum is free, open, and designed to be forked and adapted to your team. It is stack-agnostic — it works whether your team writes Rails, Go, Django, Next.js, or anything else.
 
+Background reading: [*Upgrade path available*](https://eooo.medium.com/upgrade-path-available-23a6b14a6200) — the essay behind this curriculum.
+
 ---
 
 ## What makes this different
