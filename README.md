@@ -1,3 +1,5 @@
+![AI-Native Development Bootcamp banner: tools → boot → brain](assets/banner.jpg)
+
 # AI-Native Development Bootcamp
 
 [![License: MIT](https://img.shields.io/github/license/eooo-io/ai-native-bootcamp?color=blue)](LICENSE)
