@@ -1,0 +1,10 @@
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+.env
+.env.local
+
+# Do not commit team-specific adaptations of templates
+templates/*.local.md

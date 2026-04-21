@@ -1,0 +1,184 @@
+# [PROJECT NAME] — Development Guide
+
+> This file is loaded at the start of every AI agent session that runs from this repository.
+> Keep it **current**. Treat it like documentation: review in PRs, update when conventions change.
+> Targeted at **agentic AI tools** (Claude Code, Codex CLI, etc.) but also useful human onboarding.
+
+---
+
+## Project Overview
+
+*[1-2 sentences on what this project is and who it's for]*
+
+**Primary Domain:** *[e.g., e-commerce, fintech, healthcare — so the AI adopts appropriate caution]*
+**Status:** *[active / maintenance / deprecated]*
+
+---
+
+## Technology Stack
+
+### Backend
+- **Language / Version:** *[e.g., Go 1.22, Python 3.12, PHP 8.4]*
+- **Framework / Version:** *[e.g., Django 5.0, Rails 7.1, Laravel 12]*
+- **Database:** *[e.g., PostgreSQL 16 with citext extension]*
+- **Cache:** *[e.g., Redis]*
+- **Queue:** *[e.g., Sidekiq, Celery, Horizon]*
+
+### Frontend
+- *[Framework, build tool, styling — be specific about versions]*
+
+### Infrastructure
+- *[Cloud provider, deployment method, observability]*
+
+### Development Tools
+- **Testing:** *[test runner name + version + where tests live]*
+- **Linting:** *[tool + command to run]*
+- **Formatting:** *[tool + command to run]*
+- **Type checking:** *[if applicable]*
+
+---
+
+## Project Structure
+
+*[Top-level directory tree with one-line purpose for each directory. Don't over-describe files — just directories.]*
+
+```
+project-root/
+├── cmd/                         application entry points
+├── internal/                    private packages
+│   ├── domain/                  business logic (pure, no I/O)
+│   ├── adapters/                external system integrations
+│   └── http/                    HTTP handlers and routers
+├── pkg/                         reusable packages
+├── test/                        integration tests
+└── scripts/                     developer tooling
+```
+
+---
+
+## Conventions
+
+### Code style
+- *[Language-specific conventions — naming, indent, import order]*
+- *[Project-specific choices that differ from standard]*
+
+### Testing
+- Tests live in: *[path or colocated-with-source]*
+- Naming: *[e.g., `foo_test.go` adjacent to `foo.go`]*
+- What we test: *[e.g., all public functions, no mocks for ourselves, HTTP handlers through integration only]*
+- What we don't mock: *[e.g., the database in integration tests — use a real test DB]*
+
+### Git
+- Branch naming: *[e.g., `feature/`, `fix/`, `chore/`]*
+- Commit message style: *[Conventional Commits / team-specific format]*
+- Never commit: *[e.g., `.env`, credential files, large binaries]*
+
+### Error handling
+- *[e.g., "wrap errors with context, don't swallow them"]*
+- *[anti-patterns to avoid]*
+
+---
+
+## Common Commands
+
+```bash
+# Setup
+[install command]
+[database setup command]
+
+# Run locally
+[how to start the app]
+
+# Tests
+[test command — and how to run a filtered subset]
+
+# Lint / format
+[commands]
+
+# Deploy
+[command or link to deploy docs]
+```
+
+---
+
+## AI Agent Conventions
+
+### Role boundaries
+
+- **Executing + Iterating** — fine to delegate.
+- **Editing** — fine, but show me the diff.
+- **Reviewing** — I review the diff myself. Don't mark things as done without my approval.
+- **Thinking / Planning** — use plan mode for anything over ~30 lines of diff. For architectural decisions, ask — don't decide.
+
+### What to NOT do without asking
+
+- Push to remote (especially force push or push to main/master)
+- Delete files or branches
+- Modify CI/CD configuration
+- Change dependencies (package.json, go.mod, composer.json, etc.)
+- Touch anything in `migrations/` or equivalent
+- Modify security-sensitive files: auth middleware, permission checks, `.env.example`
+
+### Agent routing (if your tool supports sub-agents)
+
+For multi-step tasks, route to the appropriate specialist:
+
+- **Database changes** → *[e.g., @database-architect]*
+- **New API endpoints** → *[e.g., @backend-specialist]*
+- **UI components** → *[e.g., @frontend-developer]*
+- **Test writing** → *[e.g., @test-engineer]*
+- **Security review** → *[e.g., @security-reviewer]*
+- **Code review** → *[e.g., @code-reviewer]*
+
+*[Adjust to the sub-agents your tool supports — omit this section if your tool doesn't have them.]*
+
+---
+
+## Autonomous workflow
+
+When working on multi-step tasks, operate autonomously:
+
+1. **Plan first** for non-trivial changes — write the plan as a checklist I can review.
+2. **Run tests after changes** — don't wait for me to ask.
+3. **Run the formatter/linter** before declaring a task complete.
+4. **Commit logical units** — one commit per coherent change, with a descriptive message. Don't batch unrelated changes.
+5. **Pause when uncertain** — a judgment call, a destructive operation, or ambiguous requirements means stop and ask.
+
+---
+
+## Security
+
+**Never paste or log:**
+- Production `.env` values
+- API keys or tokens
+- Customer data (personally identifiable information)
+- Database credentials
+- OAuth secrets
+
+**Safe to discuss:**
+- Code structure
+- Architectural questions
+- Redacted error messages
+- Test fixture data (ensure it's fake)
+
+---
+
+## Known Quirks / Gotchas
+
+*[Team-specific things that will trip up a fresh AI session. The more specific, the better.]*
+
+Examples:
+
+- The `users` table has a soft-delete column — always add `WHERE deleted_at IS NULL` or use the scoped query helper.
+- Migrations on the `orders` table require downtime — flag any migration on that table and ask before writing it.
+- The background worker uses a custom serializer — jobs must not use `json.Marshal` directly. Use `queue.Encode(...)` instead.
+- `feature_flags` must be updated via the admin UI, not via migration.
+
+---
+
+## Resources
+
+- **Docs:** *[wiki / confluence / internal site]*
+- **Runbook:** *[for operational procedures]*
+- **Architecture decisions:** *[ADR location]*
+- **Contact:** *[who to ask for what]*
