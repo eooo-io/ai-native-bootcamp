@@ -1,0 +1,30 @@
+# Lychee link checker config — https://lychee.cli.rs/
+
+# Abort after 20 seconds on any single link
+timeout = 20
+
+# Follow redirects, but cap the chain
+max_redirects = 5
+
+# Retry transient failures (5xx, timeouts)
+max_retries = 2
+retry_wait_time = 5
+
+# Be a polite bot
+user_agent = "lychee/ai-native-bootcamp"
+
+# Treat these as success — some sites block automated checks or require JS
+accept = [200, 206, 301, 302, 304, 403, 429]
+
+# Skip checking file:// and data: URLs
+exclude_all_private = false
+
+# Intentional placeholders in templates and docs — these are meant to be
+# filled in by users forking the repo, not real URLs.
+exclude = [
+    # Placeholder URLs in templates
+    "^\\[YOUR_REPO_URL\\]$",
+    "^\\[FILL IN",
+    # GitHub Actions badge URLs that require the workflow to have run at least once
+    "actions/workflows/link-check.yml/badge.svg",
+]
