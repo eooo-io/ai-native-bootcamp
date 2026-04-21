@@ -1,5 +1,12 @@
 # AI-Native Development Bootcamp
 
+[![License: MIT](https://img.shields.io/github/license/eooo-io/ai-native-bootcamp?color=blue)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/eooo-io/ai-native-bootcamp?style=flat)](https://github.com/eooo-io/ai-native-bootcamp/stargazers)
+[![Forks](https://img.shields.io/github/forks/eooo-io/ai-native-bootcamp?style=flat)](https://github.com/eooo-io/ai-native-bootcamp/network/members)
+[![Last commit](https://img.shields.io/github/last-commit/eooo-io/ai-native-bootcamp)](https://github.com/eooo-io/ai-native-bootcamp/commits/main)
+[![Link check](https://github.com/eooo-io/ai-native-bootcamp/actions/workflows/link-check.yml/badge.svg)](https://github.com/eooo-io/ai-native-bootcamp/actions/workflows/link-check.yml)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](CONTRIBUTING.md)
+
 A **three-session, 90-minutes-each** bootcamp that helps engineering teams move from *AI-assisted* development (one tool doing everything) to *AI-native* development (deliberately assigning the right tool to the right role).
 
 > If your AI plans the system, executes changes, edits files, reviews results, and declares success on its own, you have not built a workflow. You have abdicated responsibility.
@@ -54,8 +61,9 @@ See [`framework/five-role-model.md`](framework/five-role-model.md) for the full 
 
 1. Fork this repo.
 2. Replace placeholders (`[your stack]`, `[your codebase]`, `[your VCS host]`) with your specifics.
-3. Customize [`templates/`](templates/) for your team's conventions.
-4. Keep the five-role framework — that's the durable part. Everything else is scaffolding you should reshape.
+3. See [`framework/adapting-to-your-stack.md`](framework/adapting-to-your-stack.md) for worked examples — Node/TypeScript, Python/Django, Go, and Rails.
+4. Customize [`templates/`](templates/) for your team's conventions.
+5. Keep the five-role framework — that's the durable part. Everything else is scaffolding you should reshape.
 
 The curriculum is intentionally short on specifics so you can bring yours.
 
@@ -78,7 +86,8 @@ ai-native-bootcamp/
 ├── framework/                             the durable concepts
 │   ├── five-role-model.md                 why role separation matters
 │   ├── orchestration-matrix.md            which tool for which role
-│   └── capability-boundaries.md           what each tool can/cannot do
+│   ├── capability-boundaries.md           what each tool can/cannot do
+│   └── adapting-to-your-stack.md          worked examples per language/framework
 │
 ├── exercises/                             handouts for participants
 │   ├── participant-pre-work.md            send a week before Session 1
